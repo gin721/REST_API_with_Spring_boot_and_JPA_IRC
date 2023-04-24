@@ -33,6 +33,4 @@ public class ItemService {
 		repo.deleteById(i);
 		return "ITEM WITH ID " + i + " IS DELETED SUCCESSFULLY";
 	}
-	
-
 }
