@@ -16,46 +16,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 public class ItemController {
 	
 	@Autowired
 	public ItemService service;
 	
-	//Post Mapping controller to add the info into the DB using the service logic class functions
 	@PostMapping(value = "/post")
 	public ItemModel addDetails(@RequestBody ItemModel item){
 		return service.saveData(item);
 	}
 
-	//Put Mapping controller to save or update and flush the details to DB using service logic class functions
-	@PutMapping(value = "/put/{id}")
-	public ItemModel updateDetails(@RequestBody ItemModel item, @PathVariable(value = "id") UUID id){
+	@PutMapping(value = "/put")
+	public String updateDetails(@RequestBody ItemModel item, @RequestParam(value = "id") UUID id){
 		return service.updateData(item, id);
 	}
 	
-	//Get Mapping controller to get all the details using service logic class functions
-	@GetMapping(value = "/get")
+	@GetMapping(value = "/getAll")
 	public List<ItemModel> getAllDetails(){
 		return service.getAllData();
 	}
 	
-
-	//Get Mapping controller to get single the detail by UUID using service logic class functions
-	@GetMapping(value = "/get/{id}")
-	public Optional<ItemModel> getDetail(@PathVariable(value = "id") UUID id){
+	@GetMapping(value = "/get")
+	public Optional<ItemModel> getDetail(@RequestParam(value = "id") UUID id){
 		return service.getDataById(id);
 	}
 	
-	//Delete mapping controller to delete the details using service logic functions
-	//Path variable delete method
-	@DeleteMapping(value = "/delete/{id}")
-	public String deleteDetail(@PathVariable(value = "id") UUID id){
-		return service.deleteData(id);
-	}
-	
-	//RequestParam delete method
 	@DeleteMapping(value = "/delete")
 	public String deleteDetailReqparam(@RequestParam UUID id){
 		return service.deleteData(id);

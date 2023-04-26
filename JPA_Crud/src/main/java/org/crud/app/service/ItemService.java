@@ -20,12 +20,25 @@ public class ItemService {
 	@Autowired
 	public ItemRepo repo;
 	
-	//Used to save a data into the database
 	public ItemModel saveData(ItemModel i){
 		return repo.save(i);
 	}
 
-	//Used to get all data from the database
+	public String updateData(ItemModel i, UUID id){
+		ItemModel item = repo.findById(id).orElse(null);
+		if(item != null){
+			
+			item.setItemName(i.getItemName());
+			item.setQuantity(i.getQuantity());
+			repo.saveAndFlush(item);
+			
+			return "The details of the item was updated";
+		}
+		else{
+			return "The item is not present in the database to update the value";
+		}
+	}
+	
 	public List<ItemModel> getAllData(){
 		return repo.findAll();
 	}
@@ -34,34 +47,21 @@ public class ItemService {
 		return repo.findById(id);
 	}
 	
-	//Used to update the data if present in database
-	public ItemModel updateData(ItemModel i, UUID id){
-		ItemModel item = repo.findById(id).orElse(null);
-		if(item != null){
-			item.setItemName(i.getItemName());
-			item.setQuantity(i.getQuantity());
-			return repo.saveAndFlush(item);			
-		}
-		else{
-			return null;
-		}
-	}
-
 	public String deleteData(UUID id){
 		ItemModel item = repo.findById(id).orElse(null);
 		if(item != null) {
 			repo.deleteById(id);
-			return "ITEM WITH ID " + id + " IS DELETED SUCCESSFULLY";
+			return "The item " + item.toString() + " is deleted successfully";
 		}
 		else {
-			return "ITEM WITH ID " + id + " IS NOT FOUND IN THE DATABASE TO DELETE";
+			return "The item " + item.toString() + "  is not present in the database to delete";
 		}
 	}
 	
 	public String deleteAllData()
 	{
 		repo.deleteAll();
-		return "ALL DATA WAS DELETED IN THE DATABASE";
+		return "All the items in the database was deleted";
 	}
 	
 	public List<ItemModel> sortDescending(String field){	
