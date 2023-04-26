@@ -57,6 +57,12 @@ public class ItemService {
 		}
 	}
 	
+	public String deleteAllData()
+	{
+		repo.deleteAll();
+		return "ALL DATA WAS DELETED IN THE DATABASE";
+	}
+	
 	public List<ItemModel> sortDescending(String column_name){	
 		return repo.findAll(Sort.by(column_name).descending());
 	}

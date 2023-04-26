@@ -61,6 +61,11 @@ public class ItemController {
 		return service.deleteData(id);
 	}
 	
+	@DeleteMapping(value = "/deleteAll")
+	public String deleteDetails(){
+		return service.deleteAllData();
+	}
+	
 	@GetMapping(value = "/sort/desc/{column_value}")
 	public List<ItemModel> descendingOrder(@PathVariable(value = "column_value") String column_value){
 		return service.sortDescending(column_value);
