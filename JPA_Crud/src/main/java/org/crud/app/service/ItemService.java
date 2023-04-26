@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 
@@ -63,14 +64,14 @@ public class ItemService {
 		return "ALL DATA WAS DELETED IN THE DATABASE";
 	}
 	
-	public List<ItemModel> sortDescending(String column_name){	
-		return repo.findAll(Sort.by(column_name).descending());
+	public List<ItemModel> sortDescending(String field){	
+		return repo.findAll(Sort.by(Direction.DESC, field));
 	}
 	
-	public List<ItemModel> sortAscending(String column_name){	
-		return repo.findAll(Sort.by(column_name).ascending());
+	public List<ItemModel> sortAscending(String field){	
+		return repo.findAll(Sort.by(Direction.ASC, field));
 	}
-	
+
 	public List<ItemModel> pagination(int pageNumber, int pageSize){
 		Page<ItemModel> i = repo.findAll(PageRequest.of(pageNumber, pageSize));
 		return i.getContent();
@@ -80,5 +81,4 @@ public class ItemService {
 		Page<ItemModel> i = repo.findAll(PageRequest.of(pageNumber, pageSize, Sort.by(column_name).descending()));
 		return i.getContent();
 	}
-
 }

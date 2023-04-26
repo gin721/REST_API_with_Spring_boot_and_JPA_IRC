@@ -73,16 +73,16 @@ public class ItemController {
 	
 	@GetMapping(value = "/sort/asc/{name}")
 	public List<ItemModel> ascendingOrder(@PathVariable(value = "name") String name){
-		return service.sortDescending(name);
+		return service.sortAscending(name);
 	}
 	
 	@GetMapping(value = "/pagination/{pnu}/{psize}")
-	public List<ItemModel> pagination(@PathVariable("pnu") int pnu, @PathVariable(value = "psize") int psize){
+	public List<ItemModel> pagination(@PathVariable(value = "pnu") int pnu, @PathVariable(value = "psize") int psize){
 		return service.pagination(pnu, psize);
 	}
 	
 	@GetMapping(value = "/pands/{pnu}/{psize}/{column_value}")
-	public List<ItemModel> paginationData(@PathVariable("pnu") int pnu, @PathVariable(value = "psize") int psize, @PathVariable(value = "column_value") String column_value){
+	public List<ItemModel> paginationData(@PathVariable(value = "pnu") int pnu, @PathVariable(value = "psize") int psize, @PathVariable(value = "column_value") String column_value){
 		return service.paginationAndSorting(pnu, psize, column_value);
 	}
 }
