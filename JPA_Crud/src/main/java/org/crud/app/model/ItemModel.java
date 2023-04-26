@@ -1,51 +1,68 @@
 package org.crud.app.model;
 
+import java.util.UUID;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ItemModel")
 public class ItemModel {
+	public ItemModel() {
+		super();
+	}
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "item_id")
-	private int item_id;
+	private UUID itemId;
 	
 	@Column(name = "item_name")
-	private String item_name;
+	private String itemName;
 	
 	@Column(name = "quantity")
 	private int quantity;
+
 	
-	public int getItem_id() {
-		return item_id;
+	public ItemModel(UUID itemId, String itemName, int quantity) {
+		super();
+		this.itemId = itemId;
+		this.itemName = itemName;
+		this.quantity = quantity;
 	}
-	
-	public void setItem_id(int item_id) {
-		this.item_id = item_id;
+
+	public UUID getItemId() {
+		return itemId;
 	}
-	
-	public String getItem_name() {
-		return item_name;
+
+	public void setItemId(UUID itemId) {
+		this.itemId = itemId;
 	}
-	
-	public void setItem_name(String item_name) {
-		this.item_name = item_name;
+
+	public String getItemName() {
+		return itemName;
 	}
-	
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
 
 	public int getQuantity() {
 		return quantity;
 	}
-	
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
 	@Override
 	public String toString() {
-		return "ItemModel [item_id=" + item_id + ", item_name=" + item_name + ", quantity=" + quantity + "]";
+		return "ItemModel [itemId=" + itemId + ", itemName=" + itemName + ", quantity=" + quantity + "]";
 	}
+
+		
 }
