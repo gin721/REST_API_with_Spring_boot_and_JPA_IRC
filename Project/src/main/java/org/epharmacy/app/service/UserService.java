@@ -22,7 +22,6 @@ public class UserService {
 	
 	public String createUser(UserModel user){
 		boolean value = repo.existsByUserNameAndPassword(user.getUserName(), user.getPassword());
-	
 		if(value == true){
 			return "The user already exists. To enter the application please use login";
 		}
@@ -35,11 +34,18 @@ public class UserService {
 	
 	public String checkUser(String username, String password){
 		boolean value = repo.existsByUserNameAndPassword(username, password);
-		if(value == true) {
-			return "The User is successfully Logged in";
+		boolean exist = repo.existsByUserName(username);
+		
+		if(exist == true) {
+			if(value == true) {
+				return "The User is successfully Logged in";
+			}
+			else {
+				return "The user password is not correct. Login failed";
+			}
 		}
 		else {
-			return "The user details are not correct. Login failed";
+			return "The user is not found in database";
 		}
 	}
 	

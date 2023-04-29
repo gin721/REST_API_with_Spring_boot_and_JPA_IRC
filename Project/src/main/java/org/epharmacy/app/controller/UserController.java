@@ -36,7 +36,7 @@ public class UserController {
 	//Login Method
 	@PostMapping(value = "/login")
 	public String login(@RequestBody Map<String , String> loginData) {
-		String username = loginData.get("username");
+		String username = loginData.get("userName");
 		String password = loginData.get("password");
 		
 		return service.checkUser(username, password);
