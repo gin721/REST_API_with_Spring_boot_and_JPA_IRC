@@ -40,7 +40,7 @@ public class ItemService {
 	}
 	
 	public List<ItemModel> getAllData(){
-		return repo.findAll();
+		return repo.getAllData();
 	}
 	
 	public Optional<ItemModel> getDataById( UUID id){

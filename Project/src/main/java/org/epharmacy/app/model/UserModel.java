@@ -1,26 +1,47 @@
 package org.epharmacy.app.model;
 
+import java.util.UUID;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users", schema = "e_pharmacy")
+@Table(name = "users")
 public class UserModel {
-	
+	public UserModel() {
+		super();
+	}
+
+	public UserModel(UUID userId, String userName, String firstName, String lastName, int age, String email,
+			long phoneNumber, String password) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+	}
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "user_id")
-	private long id;
+	private UUID userId;
 	
-	@Column(name = "username", nullable = false)
-	private String username;
+	@Column(name = "username", nullable = false, unique = true)
+	private String userName;
 	
 	@Column(name = "first_name", nullable = false)
-	private String f_name;
+	private String firstName;
 
 	@Column(name = "last_name", nullable = false)
-	private String l_name;
+	private String lastName;
 	
 	@Column(name = "age", nullable = false)
 	private int age;
@@ -29,41 +50,41 @@ public class UserModel {
 	private String email;
 	
 	@Column(name = "phone_number", nullable = false)
-	private long p_no;
+	private long phoneNumber;
 	
 	@Column(name = "password", nullable = false)
-	private String pass;
+	private String password;
 
-	public long getId() {
-		return id;
+	public UUID getUserId() {
+		return userId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setUserId(UUID userId) {
+		this.userId = userId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getF_name() {
-		return f_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setF_name(String f_name) {
-		this.f_name = f_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getL_name() {
-		return l_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setL_name(String l_name) {
-		this.l_name = l_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public int getAge() {
@@ -82,20 +103,26 @@ public class UserModel {
 		this.email = email;
 	}
 
-	public long getP_no() {
-		return p_no;
+	public long getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setP_no(long p_no) {
-		this.p_no = p_no;
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public String getPass() {
-		return pass;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
+	@Override
+	public String toString() {
+		return "userId=" + userId + ", userName=" + userName + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", age=" + age + ", email=" + email + ", phoneNumber=" + phoneNumber + ", password="
+				+ password;
+	}
 }
