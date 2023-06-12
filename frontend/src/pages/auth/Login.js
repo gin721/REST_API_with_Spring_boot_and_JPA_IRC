@@ -17,8 +17,6 @@ export default function Login() {
         .email('Email is invalid'),
     password: Yup.string()
         .required('Password is required')
-        .min(6, 'Password must be at least 6 characters')
-        .max(40, 'Password must not exceed 40 characters'),
   });
   
   const {
@@ -40,7 +38,6 @@ export default function Login() {
         localStorage.setItem("currentUser", data.email);
         navigate("/");
       }
-      
     })
     .catch(function (error) {
       console.log(error);
@@ -74,7 +71,7 @@ export default function Login() {
             <span className="font-normal mb-2 text-md">Password</span>
             <input
               autoComplete="off"
-              type="text"
+              type="password"
               className="w-full p-2 px-3 mt-1 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:placeholder-gray-500"
               id="pass-field"
               name="pass-field"

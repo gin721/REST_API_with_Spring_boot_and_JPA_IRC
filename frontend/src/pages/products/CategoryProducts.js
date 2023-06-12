@@ -2,9 +2,9 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Footer from "../../Coponents/Footer/Footer";
-import TopNavbar from "../../Coponents/Header/TopNavbar";
-import ProductCard from "../../Coponents/Product/Card/ProductCard";
+import TopNavbar from "../../components/Header/TopNavbar";
+import ProductCard from "../../components/Product/Card/ProductCard";
+import Footer from "../../components/Footer/Footer";
 
 function CategoryProducts() {
   let { categoryName } = useParams();

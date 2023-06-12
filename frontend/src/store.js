@@ -1,5 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import ProductSlice from "./features/product/ProductSlice";
+import CategorySlice from "./features/category/CategorySlice";
+import CartSlice from "./features/cart/CartSlice";
 
 let initialState = {};
 let store = configureStore(

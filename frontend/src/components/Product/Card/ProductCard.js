@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 import "./ProductCard.css";
+
 function ProductCard({ product }) {
   return (
     <Fragment>

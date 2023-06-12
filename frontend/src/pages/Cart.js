@@ -1,6 +1,12 @@
 import React, { Fragment } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import TopNavbar from "../components/Header/TopNavbar";
+import { subTotalPrice, totalPrice, totalTax } from "../features/cart/CartSelector";
+import { cartState } from "../features/cart/CartSlice";
+import CartItemCard from "../components/cart/CartItemCard";
+import Footer from "../components/Footer/Footer";
 
 function Cart() {
   let state = useSelector((state) => state);

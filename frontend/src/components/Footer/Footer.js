@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import RightCartIcon from "../Cart/RightCartIcon";
+import RightCartIcon from "../cart/RightCartIcon";
 
 function Footer() {
   return (

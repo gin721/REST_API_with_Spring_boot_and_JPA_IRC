@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { fetchAllCategories } from "../../Features/Category/CategorySlice";
+import { fetchAllCategories } from "../../features/category/CategorySlice";
 
 function TopNavbar() {
   const { categories } = useSelector((state) => state.categories);
@@ -15,7 +15,7 @@ function TopNavbar() {
     <Navbar bg="dark" expand="lg" variant="dark">
       <Container>
         <NavLink to={"/"} className={"navbar-brand"}>
-          10mg
+          Shopify
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
