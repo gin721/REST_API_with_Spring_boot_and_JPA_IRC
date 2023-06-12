@@ -1,15 +1,28 @@
-import React, { Fragment } from 'react';
-import { Route, Routes, useRoutes } from 'react-router-dom';
-import { routes } from './routes';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {ProtectedRoute} from './components/ProtectedRoute'
+import Login from './pages/auth/Login';
+import SignUp from './pages/auth/SignUp';
+import Error404 from './pages/Error404';
+import Landing from './pages/home/Landing';
+import Home from './pages/home/Home';
+import Info from './pages/auth/Info';
 
-export default function App() {
-  const content = useRoutes(routes);
+export default function App(){
   return (
-    <>
-      {content}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={
+          <ProtectedRoute>
+            <Home/>
+          </ProtectedRoute>
+        }/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/info' element={<Info/>}/>
+        <Route path='*' element={<Error404/>}/>
+        <Route path='/landing' element={<Landing/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }

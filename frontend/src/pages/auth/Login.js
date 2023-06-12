@@ -1,11 +1,12 @@
 import React from "react";
-import GoogleLogo from '../static/google.svg';
-import LoginImage from '../static/login.jpg';
+import LoginImage from '../../static/login.jpg';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Login() {
   const navigate = useNavigate();
@@ -34,9 +35,10 @@ export default function Login() {
       password:data.password
     })
     .then(function (response) {
-      alert(response.data.message);
       if(response.data.status === true){
-        navigate("/home");
+        alert(response.data.message)
+        localStorage.setItem("currentUser", data.email);
+        navigate("/");
       }
       
     })
@@ -98,17 +100,6 @@ export default function Login() {
             className="w-full bg-black text-white p-2 rounded-lg mb-6 mt-4 hover:bg-white hover:text-black hover:border hover:border-gray-300"
           >
             Sign in
-          </button>
-          <button 
-            id="google-button" 
-            className="w-full border border-gray-300 text-md p-2 rounded-lg mb-6 hover:bg-black hover:text-white"
-          >
-            <img 
-              src={GoogleLogo} 
-              alt="Google svg" 
-              className="w-6 h-6 inline mr-2" 
-            />
-            Sign in with Google
           </button>
           <div className="text-center text-gray-400">
             Don't have an account?

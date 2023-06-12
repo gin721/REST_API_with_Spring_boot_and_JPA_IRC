@@ -12,12 +12,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="drug")
-public class DrugsModel {
-	public DrugsModel() {
+public class ProductsModel {
+	public ProductsModel() {
 		super();
 	}
 	
-	public DrugsModel(float price, LocalDateTime modified_at, LocalDateTime expiry_date,
+	public ProductsModel(float price, LocalDateTime modified_at, LocalDateTime expiry_date,
 			LocalDateTime production_date, String company, String description, String name, String sku, String type,
 			String image_url) {
 		super();

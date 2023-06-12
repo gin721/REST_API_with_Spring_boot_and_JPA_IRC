@@ -22,14 +22,14 @@ public class UserService {
 			Optional<UserModel> details = repo.findOneByEmailAndPassword(data.getEmail(), data.getPassword());
 			
 			if(details.isPresent()) {
-				return new Message("Password is correct", true);
+				return new Message("Login Successful", true);
 			}
 			else {
-				return new Message("Password is incorrect", false);
+				return new Message("Login Failed : Password is incorrect", false);
 			}
 		}
 		else {
-			return new Message("Email does not exist", false);
+			return new Message("Login Failed : Email does not exist", false);
 		}
 	}
 	

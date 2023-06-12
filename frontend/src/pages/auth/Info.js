@@ -48,7 +48,8 @@ export default function Info() {
           })
           .then(function (response) {
             alert(response.data.message);
-            navigate("/home");
+            localStorage.setItem("currentUser", data.email);
+            navigate("/");
           })
           .catch(function (error) {
             console.log(error);

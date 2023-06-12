@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { createSearchParams, useNavigate } from "react-router-dom";
-import LoginImage from '../static/login.jpg';
+import LoginImage from '../../static/login.jpg';
 
 
 export default function SignUp(){
